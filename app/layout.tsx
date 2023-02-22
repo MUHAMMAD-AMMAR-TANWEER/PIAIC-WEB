@@ -1,4 +1,12 @@
-import './globals.css'
+"use client"
+import Footer from "./Footer"
+
+import { ChakraProvider } from "@chakra-ui/react"
+import { NextUIProvider  } from '@nextui-org/react';
+
+import Header from "./Header";
+
+
 
 export default function RootLayout({
   children,
@@ -12,7 +20,17 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      
+      <body>
+        <NextUIProvider  >
+        <ChakraProvider>
+        <Header/>
+        {children}
+        <Footer/>
+        </ChakraProvider>
+        </NextUIProvider>
+        </body>
+      
     </html>
   )
 }
